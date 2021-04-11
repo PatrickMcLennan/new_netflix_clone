@@ -1,0 +1,9 @@
+schema: http://localhost:3000/api/v1/graphql
+generates:
+  ./generated/generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      apolloReactHooksImportFrom: '@apollo/client'
