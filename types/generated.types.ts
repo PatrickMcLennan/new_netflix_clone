@@ -52,6 +52,11 @@ export type Query = {
   getUsers: User;
 };
 
+export enum Role {
+  Admin = 'ADMIN',
+  User = 'USER'
+}
+
 
 export type User = {
   __typename?: 'User';
@@ -59,4 +64,5 @@ export type User = {
   firstName: Scalars['String'];
   lastName: Scalars['String'];
   email: Scalars['String'];
+  role?: Maybe<Role>;
 };

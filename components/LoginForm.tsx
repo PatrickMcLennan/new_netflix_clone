@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { LoginInput } from '../generated/generated';
+import { LoginInput } from '../types/generated.types';
 
 type Props = {
   onSubmit: (formValues: LoginInput) => any;

@@ -1,11 +1,17 @@
 import { gql } from 'apollo-server-core';
 
 export const typeDefs = gql`
+  enum Role {
+    ADMIN
+    USER
+  }
+
   type User {
     id: Int!
     firstName: String!
     lastName: String!
     email: String!
+    role: Role
   }
 
   input CreateUserInput {
