@@ -2,11 +2,12 @@
 
 module.exports = {
     root: true,
-    plugins: ["@typescript-eslint"],
+    plugins: ["@typescript-eslint", "jest"],
     env: {
       es6: true,
       browser: true,
-      jquery: true,
+      node: true,
+      "jest/globals": true
     },
     parser: 'babel-eslint',
     parserOptions: {
@@ -36,12 +37,18 @@ module.exports = {
     extends: [
       "eslint:recommended",
       "plugin:react/recommended",
-      "plugin:prettier/recommended"
+      "plugin:prettier/recommended",
+      "plugin:jest/recommended"
     ],
     rules: {
       "react/prop-types": 0,
       "no-unused-vars": "warn",
       "prettier/prettier": 2,
+      "jest/no-disabled-tests": "warn",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "jest/prefer-to-have-length": "warn",
+      "jest/valid-expect": "error"
     },
     ignorePatterns: [
       "**/node_modules/**/*",

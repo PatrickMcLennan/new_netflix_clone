@@ -6,3 +6,5 @@ config/nextjs/Dockerfile
 config/nginx/Dockerfile
 docker-compose.yml
 node_modules/         # Installed inside container
+html/
+express/dist/

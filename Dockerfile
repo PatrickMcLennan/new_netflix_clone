@@ -4,16 +4,15 @@ WORKDIR /usr/app
 
 RUN npm install --global pm2
 
-COPY ./package*.json ./
-
 RUN npm install --production
 
 COPY ./ ./
 
-RUN npm run build
+RUN npm run node:build:prod
 
 EXPOSE 3000
+EXPOSE 4000
 
 USER node
 
-CMD ["pm2-runtime", "npm", "--", "start"]
+CMD ["pm2-runtime", "start", "pm2.json"]

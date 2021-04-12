@@ -20,6 +20,33 @@ export enum CacheControlScope {
   Private = 'PRIVATE'
 }
 
+export type CreateUserInput = {
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  email: Scalars['String'];
+};
+
+export type LoginInput = {
+  email: Scalars['String'];
+  password: Scalars['String'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  createUser?: Maybe<User>;
+  login?: Maybe<User>;
+};
+
+
+export type MutationCreateUserArgs = {
+  newUser?: Maybe<CreateUserInput>;
+};
+
+
+export type MutationLoginArgs = {
+  userCreds?: Maybe<LoginInput>;
+};
+
 export type Query = {
   __typename?: 'Query';
   getUsers: User;

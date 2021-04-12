@@ -1,8 +1,40 @@
 version: '3'
 services:
-  nextjs:
+
+  nodejs:
     build: ./
+
   nginx:
     build: ./nginx
     ports:
       - 80:80
+
+  mysql:
+    image: mysql/mysql-server
+    restart: always
+    environment: 
+      ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports: 
+      - ${MYSQL_PORT}:${MYSQL_PORT}
+    expose:
+      - ${MYSQL_PORT}
+      
+  redis_auth:
+    image: redis:latest
+    ports:
+      - ${REDIS_AUTH_PORT}:${REDIS_AUTH_PORT}
+    volumes:
+      - ./config/redis.conf:/redis.conf
+    command: [ "redis-server", "/redis.conf" ]
+    expose:
+      - ${REDIS_AUTH_PORT}
+
+  redis_typeahead:
+    image: redis:latest
+    ports:
+      - ${REDIS_TYPEAHEAD_PORT}:${REDIS_TYPEAHEAD_PORT}
+    volumes:
+      - ./config/redis.conf:/redis.conf
+    command: [ "redis-server", "/redis.conf" ]
+    expose:
+      - ${REDIS_TYPEAHEAD_PORT}

@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "mysql/knex.js", "knex.ss"  ],
   "exclude": [
     "node_modules"
   ]
