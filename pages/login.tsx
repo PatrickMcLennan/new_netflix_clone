@@ -1,5 +1,5 @@
 import LoginForm from '../components/LoginForm';
-import { LoginInput } from '../generated/generated';
+import { LoginInput } from '../types/generated.types';
 
 export default function Login() {
   const onSubmit = (values: LoginInput) => console.log(values);

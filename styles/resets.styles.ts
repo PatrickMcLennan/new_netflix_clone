@@ -8,7 +8,7 @@ export const GlobalStyles = createGlobalStyle`
         min-height: 100vh;
         width: 100vw;
         overflow-x: hidden;
-        display: grid;
+        display: grid;  
         grid-template-areas:
             "header"
             "main"

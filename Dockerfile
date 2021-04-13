@@ -10,7 +10,6 @@ COPY ./ ./
 
 RUN npm run node:build:prod
 
-EXPOSE 3000
 EXPOSE 4000
 
 USER node
