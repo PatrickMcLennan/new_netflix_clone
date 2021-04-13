@@ -3,26 +3,26 @@ import reset from 'styled-reset';
 import type { CSS, FlexAlignment, FlexDirection, FlexWrap } from '../types/style.types';
 
 export const GlobalStyles = createGlobalStyle`
-    ${reset};
-    #__next {
-        min-height: 100vh;
-        width: 100vw;
-        overflow-x: hidden;
-        display: grid;  
-        grid-template-areas:
-            "header"
-            "main"
-            "footer";
-        grid-template-rows: max-content 1fr max-content;
-    }
-    ${[`header`, `main`, `footer`].map(
-      region => css`
-        .global-${region} {
-          grid-area: ${region};
-          padding: 0 7.5%;
-        }
-      `
-    )}
+  ${reset};
+  #__next {
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    display: grid;  
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    grid-template-rows: max-content 1fr max-content;
+  }
+  ${[`header`, `main`, `footer`].map(
+    region => css`
+      .global-${region} {
+        grid-area: ${region};
+        padding: 0 7.5%;
+      }
+    `
+  )}
 `;
 
 export const theme = {

@@ -6,6 +6,7 @@ import path from 'path';
 import { typeDefs } from '../graphql/typeDefs/typeDefs';
 
 import { config } from 'dotenv';
+import { redisClient } from '../clients/redis.client';
 
 config({ path: path.resolve(__dirname, `../../.env`) });
 
@@ -14,7 +15,8 @@ async function startServer() {
     typeDefs,
     resolvers,
     context: () => ({
-      db: knexInstance
+      db: knexInstance,
+      redis: redisClient
     })
   });
   await server.start();

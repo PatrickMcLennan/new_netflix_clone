@@ -19,22 +19,12 @@ services:
     expose:
       - ${MYSQL_PORT}
       
-  redis_auth:
+  redis:
     image: redis:latest
     ports:
-      - ${REDIS_AUTH_PORT}:${REDIS_AUTH_PORT}
+      - ${REDIS_PORT}:${REDIS_PORT}
     volumes:
       - ./config/redis.conf:/redis.conf
     command: [ "redis-server", "/redis.conf" ]
     expose:
-      - ${REDIS_AUTH_PORT}
-
-  redis_typeahead:
-    image: redis:latest
-    ports:
-      - ${REDIS_TYPEAHEAD_PORT}:${REDIS_TYPEAHEAD_PORT}
-    volumes:
-      - ./config/redis.conf:/redis.conf
-    command: [ "redis-server", "/redis.conf" ]
-    expose:
-      - ${REDIS_TYPEAHEAD_PORT}
+      - ${REDIS_PORT}

@@ -1,9 +1,9 @@
 query getUsers {
-    getUsers {
-        id
-        firstName
-        email
-        lastName
-        role
-    }
+  getUsers {
+    id
+    firstName
+    email
+    lastName
+    role
+  }
 }

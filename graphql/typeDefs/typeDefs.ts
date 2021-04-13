@@ -9,6 +9,7 @@ export const typeDefs = gql`
     id: Int!
     firstName: String!
     lastName: String!
+    password: String!
     email: String!
     role: Role
   }
@@ -17,6 +18,7 @@ export const typeDefs = gql`
     firstName: String!
     lastName: String!
     email: String!
+    password: String!
   }
 
   input LoginInput {

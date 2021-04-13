@@ -1,3 +1,4 @@
+import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import LoginForm, { LOGIN_FORM_ID } from '../components/LoginForm';
 import userEvent from '@testing-library/user-event';

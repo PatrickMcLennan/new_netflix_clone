@@ -1,0 +1,13 @@
+mutation login($userCreds: LoginInput) {
+  login(userCreds: $userCreds) {
+    firstName
+    lastName
+  }
+}
+
+mutation createUser($newUser: CreateUserInput) {
+  createUser(newUser: $newUser) {
+    firstName
+    lastName
+  }
+}
