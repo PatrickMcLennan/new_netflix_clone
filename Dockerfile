@@ -1,17 +1,16 @@
-FROM node:alpine
+FROM node:latest
 
 WORKDIR /usr/app
 
 RUN npm install --global pm2
-RUN npm install --global @swc/core
 RUN npm install --production
 
 COPY ./ ./
 
-RUN npm run node:build:prod
+RUN npm run express:build:prod
 
 EXPOSE 4000
 
 USER node
 
-CMD ["pm2-runtime", "start", "pm2.json"]
+CMD ["node", "./scripts/waitForRedis.js"]

@@ -2,4 +2,5 @@
 .next/
 node_modules/
 html/
+nginx/html
 express/dist/

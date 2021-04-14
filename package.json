@@ -7,7 +7,7 @@
     "next:dev": "next dev",
     "next:build": "next build",
     "next:start": "next start",
-    "next:export": "next build && next export -o html",
+    "next:export": "next build && next export -o ./nginx/html",
     "express:build:dev": "webpack --config ./express/webpack.dev.js",
     "express:build:prod": "webpack --config ./express/webpack.prod.js",
     "express:run": "node express/dist/server.js",
@@ -40,6 +40,10 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-typescript": "^7.13.0",
     "@graphql-codegen/cli": "^1.21.3",
     "@graphql-codegen/introspection": "^1.18.1",
     "@graphql-codegen/plugin-helpers": "^1.18.4",
@@ -62,6 +66,8 @@
     "@typescript-eslint/parser": "^4.21.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "babel-node": "0.0.1-security",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "concurrently": "^6.0.1",
     "dotenv": "^8.2.0",

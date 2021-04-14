@@ -16,3 +16,5 @@ A GraphQL / TypeScript clone of netflix for the media on my home NAS.
     - `calling knex without a tableName is deprecated. Use knex.queryBuilder() instead.  Error: ER_NO_TABLES_USED: No tables used`
 
  2. BUG - jest not picking up form input events and or submit event.
+
+ 3. `swc` inside of docker doing some weird things -- investigate

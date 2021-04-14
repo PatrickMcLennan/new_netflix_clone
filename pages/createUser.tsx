@@ -7,7 +7,7 @@ export default function CreateAccount() {
   });
 
   const onSubmit = ({ firstName, lastName, email, password }: CreateUserInput) =>
-    useCreateUserMutation({
+    createAccountMutation({
       variables: {
         newUser: {
           firstName,

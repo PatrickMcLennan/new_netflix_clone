@@ -1,14 +1,6 @@
 version: '3'
 services:
 
-  nodejs:
-    build: ./
-
-  nginx:
-    build: ./nginx
-    ports:
-      - 80:80
-
   mysql:
     image: mysql/mysql-server
     restart: always
@@ -18,13 +10,33 @@ services:
       - ${MYSQL_PORT}:${MYSQL_PORT}
     expose:
       - ${MYSQL_PORT}
-      
+
   redis:
     image: redis:latest
     ports:
       - ${REDIS_PORT}:${REDIS_PORT}
-    volumes:
-      - ./config/redis.conf:/redis.conf
-    command: [ "redis-server", "/redis.conf" ]
+    command: [ "redis-server" ]
     expose:
       - ${REDIS_PORT}
+
+  nodejs:
+    build: ./
+    restart: on-failure
+    depends_on: 
+      - mysql
+      - redis
+    healthcheck: 
+      # Is this working?  Don't think so, because thid build passed and the below is not real..
+      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+
+  nginx:
+    build: ./nginx
+    restart: on-failure
+    ports:
+      - ${NGINX_PORT}:${NGINX_PORT}
+    depends_on:
+      - nodejs
+      
