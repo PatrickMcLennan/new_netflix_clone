@@ -1,8 +1,7 @@
 {
     "apps": [
         {
-            "name": "express",
-            "script": "npm run express:run"
+            "script": "node ./express/dist/server.js"
         }
     ]
 }

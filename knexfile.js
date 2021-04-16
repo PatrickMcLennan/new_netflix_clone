@@ -7,7 +7,7 @@ config();
 module.exports = knex({
   client: `mysql`,
   connection: {
-    host: `localhost`,
+    host: `mysql`,
     port: process.env.MYSQL_PORT,
     user: `root`,
     password: process.env.MYSQL_ROOT_PASSWORD,

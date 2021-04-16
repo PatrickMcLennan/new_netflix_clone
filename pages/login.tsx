@@ -1,9 +1,15 @@
 import LoginForm from '../components/LoginForm';
+import { useUser } from '../stores/useUser';
 import { LoginInput, useLoginMutation } from '../types/generated.types';
 
 export default function Login() {
+  const { setUser } = useUser(({ setUser }) => ({ setUser }));
+
   const [loginMutation, { loading, data, error }] = useLoginMutation({
-    onCompleted: something => console.log(something)
+    onCompleted: something => {
+      console.log(something);
+      setUser(`hasAuth`, true);
+    }
   });
 
   const onSubmit = ({ email, password }: LoginInput) =>

@@ -21,20 +21,17 @@ services:
 
   nodejs:
     build: ./
-    restart: on-failure
+    restart: always
+    ports:
+      - ${EXPRESS_PORT}:${EXPRESS_PORT}/tcp
+    command: sh -c "pm2-runtime ./pm2.json"
     depends_on: 
       - mysql
       - redis
-    healthcheck: 
-      # Is this working?  Don't think so, because thid build passed and the below is not real..
-      test: ["CMD", "curl", "-f", "http://localhost:15672"]
-      interval: 5s
-      timeout: 10s
-      retries: 10
 
   nginx:
     build: ./nginx
-    restart: on-failure
+    restart: always
     ports:
       - ${NGINX_PORT}:${NGINX_PORT}
     depends_on:

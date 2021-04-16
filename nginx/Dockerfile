@@ -9,8 +9,5 @@ RUN rm /etc/nginx/conf.d/*
 COPY ./default.conf /etc/nginx/conf.d/
 COPY html /usr/share/nginx/html
 
-# Expose the listening port
-EXPOSE 81
-
 # Launch NGINX
 CMD [ "nginx", "-g", "daemon off;" ]

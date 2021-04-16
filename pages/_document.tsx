@@ -3,8 +3,8 @@ import NextDocument from 'next/document';
 import { ServerStyleSheet as StyledComponentSheets } from 'styled-components';
 
 /**
- * Create our stylesheets from our styled-components + material-ui
- * and applying them serverside.  This stops a brief flash of unstyled content.
+ * Create stylesheets from styled-components and apply
+ * serverside.  This stops a brief flash of unstyled content.
  *
  * @see https://medium.com/javascript-in-plain-english/ssr-with-next-js-styled-components-and-material-ui-b1e88ac11dfa
  */
