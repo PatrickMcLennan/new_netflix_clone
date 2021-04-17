@@ -27,7 +27,12 @@ export default function LoginForm({ onSubmit }: Props) {
       onSubmit={handleSubmit((values: LoginInput) => onSubmit(values))}
       className={`${LOGIN_FORM_ID}`}
     >
-      <label data-testid={`${LOGIN_FORM_ID}-email-label`} htmlFor={`email${errors.email ? ` error` : ``}`}>
+      <legend className="legend">Log In</legend>
+      <label
+        className={`label${errors.email ? ` error` : ``}`}
+        data-testid={`${LOGIN_FORM_ID}-email-label`}
+        htmlFor={`email${errors.email ? ` error` : ``}`}
+      >
         <span className="span" data-testid={`${LOGIN_FORM_ID}-label-span`}>
           Email <sup className="sup">*</sup>
         </span>
@@ -35,27 +40,30 @@ export default function LoginForm({ onSubmit }: Props) {
           aria-required="true"
           data-testid={`${LOGIN_FORM_ID}-email-input`}
           type="email"
-          className="email-input"
+          className="email-input input"
           name="email"
           {...register(`email`, { required: true })}
         />
       </label>
-      <label htmlFor={`password${errors.password ? ` error` : ``}`}>
+      <label
+        className={`label${errors.password ? ` error` : ``}`}
+        htmlFor={`password${errors.password ? ` error` : ``}`}
+      >
         <span className="span">
-          Email <sup className="sup">*</sup>
+          Password <sup className="sup">*</sup>
         </span>
         <input
           aria-required="true"
           data-testid={`${LOGIN_FORM_ID}-password-input`}
           type="password"
-          className="password-input"
+          className="password-input input"
           name="password"
           {...register(`password`, { required: true })}
         />
       </label>
-      <label className={`${LOGIN_FORM_ID}-submit-label`} htmlFor={`${LOGIN_FORM_ID}-submit`}>
+      <label className={`label ${LOGIN_FORM_ID}-submit-label`} htmlFor={`${LOGIN_FORM_ID}-submit`}>
         <input
-          className={`${LOGIN_FORM_ID}-submit`}
+          className={`${LOGIN_FORM_ID}-submit input`}
           data-testid={`${LOGIN_FORM_ID}-submit`}
           type="submit"
           value="Log In"

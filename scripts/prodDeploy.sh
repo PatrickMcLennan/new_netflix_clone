@@ -3,11 +3,10 @@ cd ..
 source .env
 
 echo "Reinstalling node_modules . . ."
-rm -r node_modules &>/dev/null
 npm ci &>/dev/null
 
-echo "Compiling Next.js HTML . . ."
-npm run next:export
+echo "Compiling Next.js HTML && express graphql server . . ."
+npm run node:build:prod
 
 echo "Shutting down current containers . . ."
 docker-compose down

@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, waitFor } from '@testing-library/react';
 import LoginForm, { LOGIN_FORM_ID } from '../components/LoginForm';
 import userEvent from '@testing-library/user-event';
 import { fireEvent } from '@testing-library/react';
@@ -16,7 +16,7 @@ const invalidEmail = `testing`;
 const invalidPassword = ``;
 const validPassword = `password`;
 
-const { queryByTestId, debug } = render(
+const { queryByTestId } = render(
   <ThemeProvider theme={theme}>
     <LoginForm onSubmit={onSubmit} />
   </ThemeProvider>
@@ -46,7 +46,8 @@ test(`<LoginForm />`, async () => {
   fireEvent.input(passwordInput, { target: { value: validPassword } });
   userEvent.click(submit);
 
-  debug();
-  expect(onSubmit).toHaveBeenCalledTimes(1);
-  expect(onSubmit).toBeCalledWith({ email: validEmail, password: validPassword });
+  await waitFor(() => {
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onSubmit).toBeCalledWith({ email: validEmail, password: validPassword });
+  });
 });

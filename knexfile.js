@@ -11,7 +11,7 @@ module.exports = knex({
     port: process.env.MYSQL_PORT,
     user: `root`,
     password: process.env.MYSQL_ROOT_PASSWORD,
-    database: `catan_scores`
+    database: `netflix-clone`
   },
   migrations: {
     directory: path.resolve(__dirname, `./migrations`)

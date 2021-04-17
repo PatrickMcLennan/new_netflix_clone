@@ -40,7 +40,6 @@ export const authResolvers = {
 
     const salt = await bcrypt.genSalt(SALT_ROUNDS);
     const hash = await bcrypt.hash(newUser.password, salt);
-
     Object.assign(newUser, { role: newUser.email === process.env.ADMIN_EMAIL ? Role.Admin : Role.User });
     Object.assign(newUser, { password: hash });
 
