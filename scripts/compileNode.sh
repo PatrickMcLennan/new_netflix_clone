@@ -19,7 +19,7 @@ else
 fi
 
 echo
-echo  Compiling our Next.js into static HTML and Express Server from TypeScript -> JavaScript . . .
+echo  Compiling our Next.js into static HTML and Express Server from TypeScript to JavaScript . . .
 echo
 npm run node:build:prod
 

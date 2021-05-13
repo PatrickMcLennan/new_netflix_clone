@@ -2,7 +2,7 @@ const knex = require('knex');
 const path = require('path');
 const { config } = require('dotenv');
 
-config();
+config({ path: path.resolve(__dirname, `./env`) });
 
 module.exports = knex({
   client: `mysql`,

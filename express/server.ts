@@ -9,7 +9,7 @@ import cors from 'cors';
 import { config } from 'dotenv';
 import { redisClient } from '../clients/redis.client';
 
-config({ path: path.resolve(__dirname, `../../.env`) });
+config({ path: path.resolve(__dirname, `../../../.env`) });
 
 const corsOptions = {
   origin: `http://localhost:3000`
@@ -29,8 +29,8 @@ async function startServer() {
   const app = express();
   server.applyMiddleware({ app });
   app.listen({ port: 4000 });
-  app.use(`/images`, cors(corsOptions), express.static(path.join(__dirname, `../../images`)));
-  app.use(`/fonts`, cors(corsOptions), express.static(path.join(__dirname, `../../fonts`)));
+  app.use(`/images`, cors(corsOptions), express.static(path.join(__dirname, `../../../images`)));
+  app.use(`/fonts`, cors(corsOptions), express.static(path.join(__dirname, `../../../fonts`)));
   console.log(`App is running on port 4000`);
 }
 

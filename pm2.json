@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "script": "node ./express/dist/server.js"
+            "script": "node ./express/dist/express/server.js"
         }
     ]
 }

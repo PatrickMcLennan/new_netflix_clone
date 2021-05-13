@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import { rem } from 'polished';
 import styled, { css } from 'styled-components';
-import LoginForm from '../components/LoginForm';
+import CreateUserForm from '../components/CreateAccountForm';
 import { imageLoader } from '../constants';
-import { useUser } from '../stores/useUser';
 import { activeStates, flexin, fontLine } from '../styles/helpers.styles';
-import { LoginInput, useLoginMutation } from '../types/generated.types';
+import { CreateUserInput, useCreateUserMutation } from '../types/generated.types';
 
 const StyledMain = styled.main`
   ${flexin({ fd: `column`, ai: `stretch` })}
@@ -18,7 +17,7 @@ const StyledMain = styled.main`
     opacity: 0;
   }
 
-  .login-form {
+  .create-account-form {
     ${flexin({ fd: `column` })};
     padding: ${rem(`30px`)} ${rem(`20px`)};
     width: 100%;
@@ -44,12 +43,11 @@ const StyledMain = styled.main`
           color: var(--red);
         }
       }
-
-      &.login-form-submit-label {
-        margin-top: ${rem(`10px`)};
-      }
     }
 
+    .create-account-form-submit-input {
+      margin-top: ${rem(`10px`)};
+    }
     .input {
       ${fontLine(rem(`14px`), rem(`18px`))};
       width: 100%;
@@ -66,7 +64,7 @@ const StyledMain = styled.main`
       transition: color var(--transition-fast);
     }
 
-    .login-form-submit {
+    .create-account-form-submit-input {
       background-color: var(--red);
       color: white;
       letter-spacing: ${rem(`1px`)};
@@ -106,33 +104,30 @@ const ImageWrapper = styled.div`
   }
 `;
 
-export default function Login() {
-  const { setUser } = useUser(({ setUser }) => ({ setUser }));
-
-  const [loginMutation, { error }] = useLoginMutation({
-    onCompleted: something => {
-      console.log(something);
-      setUser(`hasAuth`, true);
-    }
+export default function CreateAccount() {
+  const [createAccountMutation, { error }] = useCreateUserMutation({
+    onCompleted: something => console.log(something),
+    onError: err => console.error(err)
   });
 
-  const onSubmit = ({ email, password }: LoginInput) =>
-    loginMutation({
+  const onSubmit = ({ firstName, lastName, email, password }: CreateUserInput) =>
+    createAccountMutation({
       variables: {
-        userCreds: {
+        newUser: {
+          firstName,
+          lastName,
           email,
           password
         }
       }
     });
 
-  if (error) console.log(error);
+  if (error) console.error(error?.message);
 
   return (
     <>
-      <ImageWrapper>
+      <ImageWrapper aria-hidden="true">
         <Image
-          aria-label="Various poster images"
           alt="Various poster images"
           layout="fill"
           src="/login-hero.jpeg"
@@ -142,10 +137,8 @@ export default function Login() {
         />
       </ImageWrapper>
       <StyledMain className="global-main">
-        <h1 aria-hidden="true" className="h1">
-          All of your media in one place.
-        </h1>
-        <LoginForm onSubmit={onSubmit} />
+        <h1 className="h1">Create your account</h1>
+        <CreateUserForm onSubmit={onSubmit} />
       </StyledMain>
     </>
   );

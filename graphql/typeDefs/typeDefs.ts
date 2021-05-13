@@ -5,6 +5,11 @@ export const typeDefs = gql`
     USER
   }
 
+  type Image {
+    name: String!
+    url: String!
+  }
+
   type User {
     id: Int!
     firstName: String!
@@ -26,6 +31,10 @@ export const typeDefs = gql`
     password: String!
   }
 
+  input WallpapersInput {
+    wallpapers: Image[]!
+  }
+
   type Query {
     getUsers: User!
   }
@@ -33,5 +42,6 @@ export const typeDefs = gql`
   type Mutation {
     createUser(newUser: CreateUserInput): User
     login(userCreds: LoginInput): User
+    newWallpapers(wallpapers: WallpapersInput)
   }
 `;

@@ -29,6 +29,12 @@ export type CreateUserInput = {
   password: Scalars['String'];
 };
 
+export type Image = {
+  __typename?: 'Image';
+  name: Scalars['String'];
+  url: Scalars['String'];
+};
+
 export type LoginInput = {
   email: Scalars['String'];
   password: Scalars['String'];

@@ -23,12 +23,9 @@ module.exports = {
       }
     },
     globals: {
-      Drupal: 'writable',
-      DrupalBehavior: 'writable',
       React: 'readonly',
       ReactDOM: 'readonly',
       gsap: 'readonly',
-      autoComplete: `writable`
     },
     plugins: [
       "react",

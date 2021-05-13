@@ -8,10 +8,11 @@
       "allowJs": true,
       "lib": ["dom", "es6"],
       "strict": true,
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      "noImplicitAny": false
     },
     "exclude": [
-      "node_modules",
+      "../node_modules",
       "dist"
     ],
     "files": [

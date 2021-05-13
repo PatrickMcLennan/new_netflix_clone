@@ -1,11 +1,13 @@
-import { userMutations } from '../mutations/user.mutations';
+import { authResolvers } from './auth.resolvers';
+import { imageResolvers } from './image.resolvers';
 import { userResolvers } from './user.resolvers';
 
 export const resolvers = {
   Query: {
-    ...userResolvers
+    ...userResolvers,
+    ...imageResolvers
   },
   Mutation: {
-    ...userMutations
+    ...authResolvers
   }
 };
